@@ -115,7 +115,7 @@ def create_euclideanHeuristicDoc(maze):
             ws.append(["("+str(i1)+","+str(j1)+")",distancia])
             
     # Guardar el libro de trabajo en un archivo
-    wb.save("heuristica_euclediana.xlsx")
+    wb.save("heuristica_euclidiana.xlsx")
     
 def create_manhattanHeuristicDoc(maze):
     end = get_mazeEnd(maze)
@@ -158,7 +158,7 @@ def costFunction():
     return datos
 
 def euclideanHeuristicFunction():
-    archivo_excel = 'heuristica_euclediana.xlsx'
+    archivo_excel = 'heuristica_euclidiana.xlsx'
     libro_trabajo = openpyxl.load_workbook(archivo_excel)
     hoja = libro_trabajo.active
     datos = []
