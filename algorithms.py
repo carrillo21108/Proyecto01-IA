@@ -1,4 +1,5 @@
 from implementations import Fifo,Lifo,PriorityQueue
+import time
 
 def reconstruct_path(predecessors, start, end, pygameMaze):
     current = end
@@ -13,6 +14,7 @@ def reconstruct_path(predecessors, start, end, pygameMaze):
         pygameMaze.draw_pathcell(node,5)
 
 def bfs(graph,startNode,endNode,pygameMaze):
+    start_time = time.perf_counter()
     toBeVisited = []
     visited = []
     queue = Fifo()
@@ -30,6 +32,9 @@ def bfs(graph,startNode,endNode,pygameMaze):
         
         if s==endNode:
             print("Iteraciones BFS: "+str(count))
+            end_time = time.perf_counter()
+            duracion = end_time - start_time
+            print(f"El algoritmo tomo {duracion} segundos en ejecutarse.")
             reconstruct_path(predecessors, startNode, endNode, pygameMaze)
             return visited
         
@@ -42,6 +47,7 @@ def bfs(graph,startNode,endNode,pygameMaze):
     return None
                 
 def dfs(graph,startNode,endNode,pygameMaze):
+    start_time = time.perf_counter()
     toBeVisited = []
     visited = []
     stack = Lifo()
@@ -60,6 +66,9 @@ def dfs(graph,startNode,endNode,pygameMaze):
         
         if s==endNode:
             print("Iteraciones DFS: "+str(count))
+            end_time = time.perf_counter()
+            duracion = end_time - start_time
+            print(f"El algoritmo tomo {duracion} segundos en ejecutarse.")
             reconstruct_path(predecessors, startNode, endNode, pygameMaze)
             return visited
         
@@ -72,6 +81,7 @@ def dfs(graph,startNode,endNode,pygameMaze):
     return None
 
 def dls(graph,startNode,endNode,limit,pygameMaze):
+    start_time = time.perf_counter()
     toBeVisited = []
     visited = []
     stack = Lifo()
@@ -90,6 +100,9 @@ def dls(graph,startNode,endNode,limit,pygameMaze):
         
         if s==endNode:
             print("Iteraciones DLS: "+str(count))
+            end_time = time.perf_counter()
+            duracion = end_time - start_time
+            print(f"El algoritmo tomo {duracion} segundos en ejecutarse.")
             reconstruct_path(predecessors, startNode, endNode, pygameMaze)
             return visited
         
@@ -107,6 +120,7 @@ def dls(graph,startNode,endNode,limit,pygameMaze):
     return None
                 
 def ucs(graph,startNode,endNode,pygameMaze):
+    start_time = time.perf_counter()
     visited = []
     queue = PriorityQueue()
     queue.insert((startNode,[startNode]),0)
@@ -122,6 +136,9 @@ def ucs(graph,startNode,endNode,pygameMaze):
         
         if actualNode==endNode:
             print("Iteraciones UCS: "+str(count))
+            end_time = time.perf_counter()
+            duracion = end_time - start_time
+            print(f"El algoritmo tomo {duracion} segundos en ejecutarse.")
             reconstruct_path(predecessors, startNode, endNode, pygameMaze)
             return actualPath
         
@@ -139,6 +156,7 @@ def ucs(graph,startNode,endNode,pygameMaze):
     return None
 
 def gbfs(graph,startNode,heuristic,endNode,pygameMaze):
+    start_time = time.perf_counter()
     visited = []
     queue = PriorityQueue()
     queue.insert((startNode,[startNode]),heuristic)
@@ -153,6 +171,9 @@ def gbfs(graph,startNode,heuristic,endNode,pygameMaze):
         
         if actualNode==endNode:
             print("Iteraciones GBFS: "+str(count))
+            end_time = time.perf_counter()
+            duracion = end_time - start_time
+            print(f"El algoritmo tomo {duracion} segundos en ejecutarse.")
             reconstruct_path(predecessors, startNode, endNode, pygameMaze)
             return actualPath
         
@@ -169,6 +190,7 @@ def gbfs(graph,startNode,heuristic,endNode,pygameMaze):
     return None
 
 def astar_s(graph,startNode,heuristic,endNode,pygameMaze):
+    start_time = time.perf_counter()
     visited = []
     queue = PriorityQueue()
     queue.insert((startNode,[startNode]),0+heuristic)
@@ -186,6 +208,9 @@ def astar_s(graph,startNode,heuristic,endNode,pygameMaze):
 
         if actualNode==endNode:
             print("Iteraciones A*_S: "+str(count))
+            end_time = time.perf_counter()
+            duracion = end_time - start_time
+            print(f"El algoritmo tomo {duracion} segundos en ejecutarse.")
             reconstruct_path(predecessors, startNode, endNode, pygameMaze)
             return actualPath
         
